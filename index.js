@@ -27,7 +27,10 @@ app.get("/webhook", (req, res) => {
 });
 
 app.post("/webhook", async (req, res) => {
-    const messages = req.body.entry?.[0]?.changes?.[0]?.value?.messages;
+    console.log(req.query, req.body, req.headers)
+    const messages = req.body.value?.messages;
+    console.log(messages);
+
     if (messages) {
         const msg = messages[0];
         await handleIncomingMessage(msg.from, msg.text?.body || "");

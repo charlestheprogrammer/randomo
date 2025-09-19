@@ -89,6 +89,8 @@ async function drawAndSendResults(ownerPhone) {
 
 async function sendWhatsAppMessage(to, message) {
     console.log(to, message);
+    console.log(PHONE_NUMBER_ID, WHATSAPP_TOKEN);
+
     await fetch(`https://graph.facebook.com/v22.0/${PHONE_NUMBER_ID}/messages`, {
         method: "POST",
         headers: {

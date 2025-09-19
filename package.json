@@ -1,0 +1,27 @@
+{
+  "name": "randomo",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/charlestheprogrammer/randomo#readme",
+  "bugs": {
+    "url": "https://github.com/charlestheprogrammer/randomo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlestheprogrammer/randomo.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "uuid": "^13.0.0"
+  }
+}

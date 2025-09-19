@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 import dotenv from "dotenv";
 dotenv.config();
 
+import { sendWhatsAppMessage } from "./send_message.js";
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -45,10 +47,34 @@ app.post("/webhook", (req, res) => {
 });
 
 function handleIncomingMessage(from, text) {
-    // Ici tu traites le texte et tu mets à jour la config du jeu
-}
+    console.log(text);
+    const [command, ...args] = text.trim().split(" ");
 
-app.listen(3000, () => console.log("Serveur en écoute sur http://localhost:3000"));
+    switch (command) {
+        case "/create":
+            createGame(from);
+            break;
+
+        case "/add":
+            addParticipant(from, args[0], args[1]);
+            break;
+
+        case "/exclude":
+            excludeRule(from, args[0], args[1]);
+            break;
+
+        case "/list":
+            listParticipants(from);
+            break;
+
+        case "/draw":
+            drawAndSendResults(from);
+            break;
+
+        default:
+            sendWhatsAppMessage(from, "Commande inconnue. Utilisez /create, /add, /exclude, /list, /draw.");
+    }
+}
 
 // Créer un tirage
 app.post("/create", (req, res) => {

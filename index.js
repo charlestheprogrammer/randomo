@@ -27,9 +27,7 @@ app.get("/webhook", (req, res) => {
 });
 
 app.post("/webhook", async (req, res) => {
-    console.log(req.query, req.body, req.headers)
     const messages = req.body.value?.messages;
-    console.log(messages);
 
     if (messages) {
         const msg = messages[0];
